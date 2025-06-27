@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <title>Табиғи ресурстар</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            height: 70px;
+            justify-content: space-between;
+        }
+        .header .logo {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #1e1d3a;
+        }
+        .header nav {
+            display: flex;
+            gap: 30px;
+        }
+        .header nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .header nav a:hover {
+            color: #45d0d1;
+        }
+        .header .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header .profile img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .header .profile span {
+            font-weight: 500;
+        }
+        .nav-link {
+            cursor: pointer;
+        }
+        .navbar-custom {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link, .navbar-brand, .dropdown-item {
+            color: #333333 !important;
+        }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .nav-pills .nav-link {
+            text-align: left;
+            color: #ffffff !important;   /* белый текст всегда */
+            font-weight: 600;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: #0b5ed7;   /* подсветка при наведении */
+            color: #ffffff !important;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+            color: #ffffff !important;
+        }
+
+        .nav-pills {
+            background-color: #1e2a38;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+      </style>
+</head>
+<body>
+    <div class="header">
+        <a href="map.html" class="logo" style="text-decoration: none; color: inherit;">SmartMine</a>
+        <nav>
+            <a href="index.html">Басты бет</a>
+            <a href="catalog.html">Каталог</a>
+            <a href="course-section-1.html">Курстар</a>
+            <a href="#">Блог</a>
+            <a href="about.html">Біз туралы</a>
+        </nav>
+        <div class="profile">
+            <span>Айдын</span>
+        </div>
+    </div>
+    <div class="container-fluid mt-4">
+        <div class="container">
+            <div style="text-align: center;">
+                <h1 style="font-weight: 600;">SmartMine диспетчерлік платформасы</h1>
+                <p>Тау-кен диспетчерлеріне арналған заманауи цифрлық шешімдер</p>
+            </div>
+            <div class="dashboard-sections" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 40px;">
+                <div class="dashboard-card" onclick="openModal('monitoring')" style="cursor:pointer;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px; box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3); padding: 32px 24px; min-width: 240px; max-width: 320px; flex: 1 1 260px; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div style="font-size: 2.5em; margin-bottom: 16px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">📊</div>
+                    <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 12px;">Мониторинг</div>
+                    <div style="font-size: 0.95em; opacity: 0.9;">Жабдықтар мен процестердің нақты уақыттағы жағдайын бақылау</div>
+                    <div style="position: absolute; top: 12px; right: 12px; width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                </div>
+                <div class="dashboard-card" onclick="openModal('reports')" style="cursor:pointer;background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 20px; box-shadow: 0 8px 32px rgba(240, 147, 251, 0.3); padding: 32px 24px; min-width: 240px; max-width: 320px; flex: 1 1 260px; text-align: center; transition: all 0.3s ease;">
+                    <div style="font-size: 2.5em; margin-bottom: 16px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">📑</div>
+                    <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 12px;">Есептер</div>
+                    <div style="font-size: 0.95em; opacity: 0.9;">Өндірістік және қауіпсіздік бойынша толық есептер</div>
+                </div>
+                <div class="dashboard-card" onclick="openModal('map')" style="cursor:pointer;background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 20px; box-shadow: 0 8px 32px rgba(79, 172, 254, 0.3); padding: 32px 24px; min-width: 240px; max-width: 320px; flex: 1 1 260px; text-align: center; transition: all 0.3s ease;">
+                    <div style="font-size: 2.5em; margin-bottom: 16px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">🗺️</div>
+                    <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 12px;">Карта</div>
+                    <div style="font-size: 0.95em; opacity: 0.9;">Шахтаның интерактивті картасы және маршруттар</div>
+                </div>
+                <div class="dashboard-card" onclick="openModal('shift')" style="cursor:pointer;background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; border-radius: 20px; box-shadow: 0 8px 32px rgba(67, 233, 123, 0.3); padding: 32px 24px; min-width: 240px; max-width: 320px; flex: 1 1 260px; text-align: center; transition: all 0.3s ease;">
+                    <div style="font-size: 2.5em; margin-bottom: 16px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">👷‍♂️</div>
+                    <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 12px;">Смена басқару</div>
+                    <div style="font-size: 0.95em; opacity: 0.9;">Жұмысшылардың ауысымын жоспарлау және бақылау</div>
+                </div>
+                <div class="dashboard-card" onclick="openModal('chat')" style="cursor:pointer;background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; border-radius: 20px; box-shadow: 0 8px 32px rgba(250, 112, 154, 0.3); padding: 32px 24px; min-width: 240px; max-width: 320px; flex: 1 1 260px; text-align: center; transition: all 0.3s ease;">
+                    <div style="font-size: 2.5em; margin-bottom: 16px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">💬</div>
+                    <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 12px;">Чат</div>
+                    <div style="font-size: 0.95em; opacity: 0.9;">Диспетчерлер мен жұмысшыларға арналған ішкі байланыс</div>
+                </div>
+                <div class="dashboard-card" onclick="openModal('knowledge')" style="cursor:pointer;background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; border-radius: 20px; box-shadow: 0 8px 32px rgba(168, 237, 234, 0.3); padding: 32px 24px; min-width: 240px; max-width: 320px; flex: 1 1 260px; text-align: center; transition: all 0.3s ease;">
+                    <div style="font-size: 2.5em; margin-bottom: 16px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">📚</div>
+                    <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 12px;">Білім базасы</div>
+                    <div style="font-size: 0.95em; opacity: 0.8;">Нұсқаулықтар, регламенттер және пайдалы материалдар</div>
+                </div>
+            </div>
+            <div class="row">
+            
+              <div class="col-md-9">
+                <!-- Удалён блок tab-content с вкладками и их содержимым -->
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #1e1d3a; color: white; padding: 40px 20px; text-align: center;">
+        <div style="max-width: 800px; margin: auto;">
+          <h2 style="font-weight: bold;">SmartMine</h2>
+          <p style="margin-top: 0;">SmartMine</p>
+      
+          <p style="margin: 30px 0 10px;">Біздің жаңартуларымызға жазылыңыз</p>
+      
+          <form style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;">
+            <input type="email" placeholder="Сіздің электрондық поштаңыз"
+                   style="padding: 10px 20px; border: none; border-radius: 25px; min-width: 250px; outline: none;">
+            <button type="submit"
+                    style="padding: 10px 30px; background-color: #45d0d1; color: white; border: none; border-radius: 25px; cursor: pointer;">
+              Жазылу
+            </button>
+          </form>
+      
+          <div style="font-size: 14px; color: #aaa; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="#" style="color: #aaa; text-decoration: none;">Курстар</a>
+            <span>|</span>
+            <a href="#" style="color: #aaa; text-decoration: none;">Құпиялық саясаты</a>
+            <span>|</span>
+            <a href="#" style="color: #aaa; text-decoration: none;">Пайдалану шарттары</a>
+          </div>
+      
+          <p style="margin-top: 20px; font-size: 13px; color: #aaa;">© 2025 GeoMapEd. Барлық құқықтар қорғалған</p>
+        </div>
+      </footer>
+      
+    <!-- Модальные окна -->
+    <div id="modal-bg" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;backdrop-filter: blur(5px);">
+        <div id="modal-content" style="background:#fff;border-radius:20px;max-width:600px;width:90vw;max-height:80vh;overflow-y:auto;padding:0;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+            <button onclick="closeModal()" style="position:absolute;top:15px;right:20px;background:none;border:none;font-size:2em;cursor:pointer;color:#666;z-index:10;">&times;</button>
+            <div id="modal-inner"></div>
+        </div>
+    </div>
+    <script>
+    function openModal(type) {
+        document.getElementById('modal-bg').style.display = 'flex';
+        let html = '';
+        
+        if(type==='monitoring') {
+            html = `
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 20px 20px 0 0;">
+                    <h2 style="margin: 0; font-size: 1.8em;">📊 Мониторинг жүйесі</h2>
+                    <p style="margin: 10px 0 0 0; opacity: 0.9;">Нақты уақыттағы жабдықтар мен процестердің жағдайы</p>
+                </div>
+                <div style="padding: 30px;">
+                    <div class="chart-container">
+                        <h3>Жабдықтардың жағдайы</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                            <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #10b981;">
+                                <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                    <span class="status-indicator status-good"></span>
+                                    <strong>Конвейер №1</strong>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="background: #10b981; width: 85%;"></div>
+                                </div>
+                                <small>85% жүктеме</small>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #f59e0b;">
+                                <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                    <span class="status-indicator status-warning"></span>
+                                    <strong>Вентиляция</strong>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="background: #f59e0b; width: 65%;"></div>
+                                </div>
+                                <small>65% тиімділік</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Қауіпсіздік көрсеткіштері</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 15px;">
+                            <div style="text-align: center; background: white; padding: 20px; border-radius: 10px;">
+                                <div style="font-size: 2em; color: #10b981;">98%</div>
+                                <small>Қауіпсіздік</small>
+                            </div>
+                            <div style="text-align: center; background: white; padding: 20px; border-radius: 10px;">
+                                <div style="font-size: 2em; color: #f59e0b;">2</div>
+                                <small>Ескертулер</small>
+                            </div>
+                            <div style="text-align: center; background: white; padding: 20px; border-radius: 10px;">
+                                <div style="font-size: 2em; color: #667eea;">24°C</div>
+                                <small>Температура</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="refreshMonitoring()" style="background: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; margin-top: 15px;">Жаңарту</button>
+                </div>
+            `;
+        } else if(type==='reports') {
+            html = `
+                <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 30px; border-radius: 20px 20px 0 0;">
+                    <h2 style="margin: 0; font-size: 1.8em;">📑 Есептер орталығы</h2>
+                    <p style="margin: 10px 0 0 0; opacity: 0.9;">Өндірістік және қауіпсіздік бойынша толық есептер</p>
+                </div>
+                <div style="padding: 30px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div style="background: #f8fafc; padding: 20px; border-radius: 15px;">
+                            <h3>📊 Өндірістік есептер</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 10px; background: white; margin: 8px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>2024-06-01: Күндізгі ауысым</span>
+                                    <button style="background: #f093fb; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">PDF</button>
+                                </li>
+                                <li style="padding: 10px; background: white; margin: 8px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>2024-05-31: Түнгі ауысым</span>
+                                    <button style="background: #f093fb; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">PDF</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="background: #f8fafc; padding: 20px; border-radius: 15px;">
+                            <h3>🛡️ Қауіпсіздік есептері</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 10px; background: white; margin: 8px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>2024-06-01: Ауа сапасы</span>
+                                    <button style="background: #f093fb; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">PDF</button>
+                                </li>
+                                <li style="padding: 10px; background: white; margin: 8px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>2024-05-31: Жабдық тексеруі</span>
+                                    <button style="background: #f093fb; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">PDF</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button onclick="generateReport()" style="background: #f093fb; color: white; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer;">Жаңа есеп жасау</button>
+                </div>
+            `;
+        } else if(type==='map') {
+            html = `
+                <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 30px; border-radius: 20px 20px 0 0;">
+                    <h2 style="margin: 0; font-size: 1.8em;">🗺️ Шахта картасы</h2>
+                    <p style="margin: 10px 0 0 0; opacity: 0.9;">Интерактивті карта және навигация</p>
+                </div>
+                <div style="padding: 30px;">
+                    <div style="position: relative; margin-bottom: 20px;">
+                        <img src='44.jpg' alt='Карта' style='width:100%;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.1);'>
+                        <div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 10px;">
+                            <div style="font-size: 0.9em; color: #333;">
+                                <div>📍 Конвейер</div>
+                                <div>🏭 Шахта</div>
+                                <div>🚪 Шығыс</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <button onclick="showRoute()" style="background: #4facfe; color: white; border: none; padding: 12px; border-radius: 10px; cursor: pointer;">Маршрут көрсету</button>
+                        <button onclick="zoomMap()" style="background: #00f2fe; color: white; border: none; padding: 12px; border-radius: 10px; cursor: pointer;">Үлкейту</button>
+                    </div>
+                </div>
+            `;
+        } else if(type==='shift') {
+            html = `
+                <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 30px; border-radius: 20px 20px 0 0;">
+                    <h2 style="margin: 0; font-size: 1.8em;">👷‍♂️ Смена басқару</h2>
+                    <p style="margin: 10px 0 0 0; opacity: 0.9;">Жұмысшылардың ауысымын жоспарлау және бақылау</p>
+                </div>
+                <div style="padding: 30px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div style="background: #f8fafc; padding: 20px; border-radius: 15px;">
+                            <h3>📅 Бүгінгі ауысымдар</h3>
+                            <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <strong>08:00 - 16:00</strong>
+                                    <span style="background: #43e97b; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8em;">Белсенді</span>
+                                </div>
+                                <div>👤 Айдын (Диспетчер)</div>
+                                <div>👤 Бекзат (Оператор)</div>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <strong>16:00 - 00:00</strong>
+                                    <span style="background: #f59e0b; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8em;">Күтуде</span>
+                                </div>
+                                <div>👤 Данияр (Диспетчер)</div>
+                                <div>👤 Аслан (Оператор)</div>
+                            </div>
+                        </div>
+                        <div style="background: #f8fafc; padding: 20px; border-radius: 15px;">
+                            <h3>➕ Жаңа ауысым</h3>
+                            <input type="text" placeholder="Жұмысшы аты" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px;">
+                            <select style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px;">
+                                <option>Диспетчер</option>
+                                <option>Оператор</option>
+                                <option>Техник</option>
+                            </select>
+                            <input type="time" style="width: 48%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-right: 2%;">
+                            <input type="time" style="width: 48%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-left: 2%;">
+                            <button onclick="addShift()" style="width: 100%; background: #43e97b; color: white; border: none; padding: 12px; border-radius: 8px; margin-top: 10px; cursor: pointer;">Қосу</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if(type==='chat') {
+            html = `
+                <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; padding: 30px; border-radius: 20px 20px 0 0;">
+                    <h2 style="margin: 0; font-size: 1.8em;">💬 Командалық чат</h2>
+                    <p style="margin: 10px 0 0 0; opacity: 0.9;">Диспетчерлер мен жұмысшыларға арналған ішкі байланыс</p>
+                </div>
+                <div style="padding: 30px;">
+                    <div id='chat-box' style='height:300px;overflow-y:auto;border:1px solid #eee;border-radius:15px;padding:20px;margin-bottom:20px;background:#f8fafc;'>
+                        <div style="background: white; padding: 12px; border-radius: 15px; margin-bottom: 15px; max-width: 80%;">
+                            <div style="font-weight: bold; color: #667eea; margin-bottom: 5px;">👤 Айдын (08:30)</div>
+                            <div>Барлығы жақсы ма? Конвейер жұмыс істеп тұр ма?</div>
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 15px; margin-bottom: 15px; max-width: 80%; margin-left: auto;">
+                            <div style="font-weight: bold; color: #f093fb; margin-bottom: 5px; text-align: right;">👤 Бекзат (08:32)</div>
+                            <div>Иә, жабдықтар қалыпты жұмыс істеп тұр. Жүктеме 85%.</div>
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 15px; margin-bottom: 15px; max-width: 80%;">
+                            <div style="font-weight: bold; color: #4facfe; margin-bottom: 5px;">👤 Данияр (08:35)</div>
+                            <div>Вентиляция жүйесінде кішігірім мәселе бар. Тексеру қажет.</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <input id='chat-input' type='text' placeholder='Хабарлама жазыңыз...' style='flex:1;padding:12px;border:1px solid #ddd;border-radius:25px;outline:none;'>
+                        <button onclick='sendChatMsg()' style='background:#fa709a;color:white;border:none;padding:12px 20px;border-radius:25px;cursor:pointer;'>Жіберу</button>
+                    </div>
+                </div>
+            `;
+        } else if(type==='knowledge') {
+            html = `
+                <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; padding: 30px; border-radius: 20px 20px 0 0;">
+                    <h2 style="margin: 0; font-size: 1.8em;">📚 Білім базасы</h2>
+                    <p style="margin: 10px 0 0 0; opacity: 0.8;">Нұсқаулықтар, регламенттер және пайдалы материалдар</p>
+                </div>
+                <div style="padding: 30px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="background: #f8fafc; padding: 20px; border-radius: 15px;">
+                            <h3>🛡️ Қауіпсіздік</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 12px; background: white; margin: 8px 0; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#e0f2fe'" onmouseout="this.style.background='white'">
+                                    📋 Қауіпсіздік нұсқаулығы
+                                </li>
+                                <li style="padding: 12px; background: white; margin: 8px 0; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#e0f2fe'" onmouseout="this.style.background='white'">
+                                    🚨 Төтенше жағдайлар протоколы
+                                </li>
+                                <li style="padding: 12px; background: white; margin: 8px 0; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#e0f2fe'" onmouseout="this.style.background='white'">
+                                    🧯 Өрт сөндіру ережелері
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="background: #f8fafc; padding: 20px; border-radius: 15px;">
+                            <h3>⚙️ Жабдықтар</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 12px; background: white; margin: 8px 0; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#e0f2fe'" onmouseout="this.style.background='white'">
+                                    🔧 Жабдықтарды іске қосу
+                                </li>
+                                <li style="padding: 12px; background: white; margin: 8px 0; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#e0f2fe'" onmouseout="this.style.background='white'">
+                                    🔄 Техникалық қызмет көрсету
+                                </li>
+                                <li style="padding: 12px; background: white; margin: 8px 0; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#e0f2fe'" onmouseout="this.style.background='white'">
+                                    📊 Диагностика әдістері
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <input type="text" placeholder="Қай материалды іздеу керек?" style="width: 60%; padding: 12px; border: 1px solid #ddd; border-radius: 25px; outline: none;">
+                        <button style="background: #a8edea; color: #333; border: none; padding: 12px 20px; border-radius: 25px; margin-left: 10px; cursor: pointer;">Іздеу</button>
+                    </div>
+                </div>
+            `;
+        }
+        document.getElementById('modal-inner').innerHTML = html;
+    }
+
+    function closeModal() {
+        document.getElementById('modal-bg').style.display = 'none';
+    }
+
+    function sendChatMsg() {
+        var input = document.getElementById('chat-input');
+        var box = document.getElementById('chat-box');
+        if(input.value.trim()) {
+            var time = new Date().toLocaleTimeString('kk-KZ', {hour: '2-digit', minute:'2-digit'});
+            box.innerHTML += `
+                <div style="background: #667eea; color: white; padding: 12px; border-radius: 15px; margin-bottom: 15px; max-width: 80%; margin-left: auto;">
+                    <div style="font-weight: bold; margin-bottom: 5px; text-align: right;">👤 Сіз (${time})</div>
+                    <div style="text-align: right;">${input.value}</div>
+                </div>
+            `;
+            input.value = '';
+            box.scrollTop = box.scrollHeight;
+        }
+    }
+
+    // ИИ Ассистент функции
+    function toggleAI() {
+        var chat = document.getElementById('ai-chat');
+        chat.style.display = chat.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function sendAIMessage() {
+        var input = document.getElementById('ai-input');
+        var messages = document.getElementById('ai-messages');
+        var question = input.value.trim();
+        
+        if(question) {
+            // Добавляем вопрос пользователя
+            messages.innerHTML += `
+                <div style="background: #667eea; color: white; padding: 10px; border-radius: 15px; margin-bottom: 10px; max-width: 80%; margin-left: auto;">
+                    <strong>Сіз:</strong> ${question}
+                </div>
+            `;
+            
+            // ИИ ответ
+            var aiResponse = getAIResponse(question);
+            messages.innerHTML += `
+                <div style="background: #f0f2f5; padding: 10px; border-radius: 15px; margin-bottom: 10px; max-width: 80%;">
+                    <strong>AI:</strong> ${aiResponse}
+                </div>
+            `;
+            
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+        }
+    }
+
+    function getAIResponse(question) {
+        question = question.toLowerCase();
+        if(question.includes('мониторинг') || question.includes('жабдық')) {
+            return 'Мониторинг бөлімінде жабдықтардың нақты уақыттағы жағдайын көре аласыз. Қызыл индикатор - мәселе бар, жасыл - бәрі жақсы.';
+        } else if(question.includes('есеп') || question.includes('отчет')) {
+            return 'Есептер бөлімінде өндірістік және қауіпсіздік есептерін көре аласыз. PDF форматта жүктей аласыз.';
+        } else if(question.includes('карта') || question.includes('шахта')) {
+            return 'Карта бөлімінде шахтаның интерактивті картасын көре аласыз. Маршруттар мен жабдықтардың орналасуын көрсетеді.';
+        } else if(question.includes('смена') || question.includes('ауысым')) {
+            return 'Смена басқару бөлімінде жұмысшылардың ауысымын жоспарлай аласыз. Жаңа ауысым қоса аласыз.';
+        } else if(question.includes('чат') || question.includes('байланыс')) {
+            return 'Чат бөлімінде команда мүшелерімен байланыса аласыз. Нақты уақытта хабарламалар жібере аласыз.';
+        } else if(question.includes('білім') || question.includes('нұсқаулық')) {
+            return 'Білім базасында қауіпсіздік нұсқаулықтары, жабдықтарды іске қосу ережелері және басқа пайдалы материалдар бар.';
+        } else {
+            return 'Сұрағыңызға жауап бере алмаймын. Басқа сұрақ қойыңыз немесе меню бөлімдерін пайдаланыңыз.';
+        }
+    }
+
+    // Дополнительные функции
+    function refreshMonitoring() {
+        alert('Мониторинг деректері жаңартылды!');
+    }
+
+    function generateReport() {
+        alert('Жаңа есеп жасалып тұр...');
+    }
+
+    function showRoute() {
+        alert('Маршрут картада көрсетілді!');
+    }
+
+    function zoomMap() {
+        alert('Карта үлкейтілді!');
+    }
+
+    function addShift() {
+        alert('Жаңа ауысым қосылды!');
+    }
+
+    // Enter key для чата
+    document.addEventListener('keypress', function(e) {
+        if(e.key === 'Enter') {
+            if(document.getElementById('chat-input')) {
+                sendChatMsg();
+            }
+            if(document.getElementById('ai-input')) {
+                sendAIMessage();
+            }
+        }
+    });
+    </script>
+    
+    <!-- ИИ Ассистент -->
+    <div id="ai-assistant" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+        <!-- Плавающая кнопка -->
+        <div id="ai-button" onclick="toggleAI()" style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); transition: all 0.3s ease; animation: pulse 2s infinite;">
+            <div style="font-size: 24px; color: white;">🤖</div>
+        </div>
+        
+        <!-- Чат окно -->
+        <div id="ai-chat" style="display: none; position: absolute; bottom: 80px; right: 0; width: 350px; background: white; border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); overflow: hidden;">
+            <!-- Заголовок чата -->
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center;">
+                <h3 style="margin: 0; font-size: 1.2em;">SmartMine AI Ассистент</h3>
+                <p style="margin: 5px 0 0 0; opacity: 0.9; font-size: 0.9em;">Сұрақтарыңызға жауап беремін</p>
+            </div>
+            
+            <!-- Сообщения -->
+            <div id="ai-messages" style="height: 300px; overflow-y: auto; padding: 20px; background: #f8fafc;">
+                <div style="background: #f0f2f5; padding: 12px; border-radius: 15px; margin-bottom: 15px;">
+                    <strong>AI:</strong> Сәлем! Мен SmartMine AI ассистентімін. Қалай көмектесе аламын? Платформаның қай бөлімі туралы білгіңіз келеді?
+                </div>
+            </div>
+            
+            <!-- Поле ввода -->
+            <div style="padding: 15px; border-top: 1px solid #eee; background: white;">
+                <div style="display: flex; gap: 10px;">
+                    <input id="ai-input" type="text" placeholder="Сұрақ жазыңыз...' style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; font-size: 0.9em;">
+                    <button onclick="sendAIMessage()" style="background: #667eea; color: white; border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-size: 0.9em;">Жіберу</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    #ai-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+    }
+    </style>
+</body>
+</html>
